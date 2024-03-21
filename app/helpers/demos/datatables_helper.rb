@@ -1,0 +1,2 @@
+module Demos::DatatablesHelper
+end
