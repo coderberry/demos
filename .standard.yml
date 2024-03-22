@@ -1,0 +1,7 @@
+fix: true
+format: progress
+ignore:
+  - vendor/**/*
+  - db/**/*
+plugins:
+  - standard-rails

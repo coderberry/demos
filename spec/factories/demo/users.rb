@@ -1,18 +1,7 @@
-module Demo
-  class User < ApplicationRecord
-    include PgSearch::Model
-    pg_search_scope :search,
-                    against: [:age, :email, :is_active, :name, :phone, :roles],
-                    using: { tsearch: { prefix: true } }
-
-    ROLES = %w[admin member guest].freeze
-
-    validates :name, presence: true
-    validates :email, presence: true, uniqueness: true
-
-    def role?(role)
-      roles.include?(role.to_s)
-    end
+FactoryBot.define do
+  factory :demo_user, class: "Demo::User" do
+    name { Faker::Name.name }
+    email { Faker::Internet.email }
   end
 end
 

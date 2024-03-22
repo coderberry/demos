@@ -23,24 +23,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_21_155457) do
     t.jsonb "roles", default: [], null: false
     t.boolean "is_active", default: true
     t.jsonb "settings", default: {}, null: false
-    t.index ["email"], name: "index_demo_users_on_email", unique: true
-    t.index ["roles"], name: "index_demo_users_on_roles", using: :gin
-  end
-
-  create_table "demos_users", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "email", null: false
-    t.integer "age"
-    t.text "bio"
-    t.string "phone"
-    t.string "address"
-    t.jsonb "roles", default: [], null: false
-    t.boolean "is_active", default: true
-    t.jsonb "settings", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_demos_users_on_email", unique: true
-    t.index ["roles"], name: "index_demos_users_on_roles", using: :gin
+    t.index ["email"], name: "index_demo_users_on_email", unique: true
+    t.index ["roles"], name: "index_demo_users_on_roles", using: :gin
   end
 
 end

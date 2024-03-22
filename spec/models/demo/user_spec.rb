@@ -1,19 +1,7 @@
-module Demo
-  class User < ApplicationRecord
-    include PgSearch::Model
-    pg_search_scope :search,
-                    against: [:age, :email, :is_active, :name, :phone, :roles],
-                    using: { tsearch: { prefix: true } }
+require "rails_helper"
 
-    ROLES = %w[admin member guest].freeze
-
-    validates :name, presence: true
-    validates :email, presence: true, uniqueness: true
-
-    def role?(role)
-      roles.include?(role.to_s)
-    end
-  end
+RSpec.describe Demo::User, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
 end
 
 # == Schema Information

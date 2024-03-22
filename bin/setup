@@ -30,4 +30,7 @@ FileUtils.chdir APP_ROOT do
 
   puts "\n== Restarting application server =="
   system! "bin/rails restart"
+
+  puts "\n== Set up AppMap =="
+  system! "bundle config local.appmap $(pwd)"
 end

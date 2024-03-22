@@ -12,6 +12,8 @@ class CreateDemoUsers < ActiveRecord::Migration[7.1]
 
       t.index :email, unique: true
       t.index :roles, using: :gin
+
+      t.timestamps
     end
   end
 end

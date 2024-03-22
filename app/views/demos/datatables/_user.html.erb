@@ -1,3 +1,17 @@
-<li>
-  <%= user.name %>
-</li>
+<div id="<%= dom_id(user) %>" class="table-row">
+  <div class="table-cell pr-4">
+    <%= user.name %>
+  </div>
+
+  <div class="table-cell pr-4">
+    <%= user.email %>
+  </div>
+
+  <div class="table-cell pr-4">
+    <%= user.is_active? ? "Active" : "Inactive" %>
+  </div>
+
+  <div class="table-cell pr-4">
+    <%= user.created_at %>
+  </div>
+</div>

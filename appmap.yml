@@ -1,0 +1,9 @@
+---
+name: playground
+language: ruby
+appmap_dir: tmp/appmap
+packages:
+- path: app
+- path: lib
+- gem: pagy
+exclude: []

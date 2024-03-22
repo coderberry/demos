@@ -1,7 +1,38 @@
-<div>
+<div class="w-full flex flex-col gap-3">
   <h1 class="font-bold text-4xl">Datatables</h1>
 
-  <ul>
-    <%= render partial: "user", collection: @users %>
-  </ul>
+  <%= form_with url: "", method: :get,
+                html: { class: "flex flex-col gap-2" },
+                data: { turbo_frame: "demo_users", turbo_action: "advance" } do |form| %>
+
+    <div class="relative mb-6">
+      <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+        <%= inline_svg_tag "icons/search.svg", aria: { hidden: true }, class: "w-4 h-4 fill-slate-400" %>
+      </div>
+      <%= form.search_field :query, value: params[:search],
+                            class: %w[
+                              border rounded-lg block w-full ps-10 p-2.5 bg-slate-700
+                              border-slate-600 placeholder-slate-400 text-white
+                              focus:ring-blue-500 focus:border-blue-500
+                            ].join(" "),
+                            placeholder: "Search..." %>
+    </div>
+  <% end %>
+
+
+  <%= turbo_frame_tag :demo_users do %>
+    <div class="w-full table border border-slate-600 border-collapse">
+      <div class="table-header-group">
+        <%= sort_link_to "Name", :name, class: "table-cell pr-4", data: { turbo_action: "advance" } %>
+        <%= sort_link_to "Email", :position, class: "table-cell pr-4", data: { turbo_action: "advance" } %>
+        <%= sort_link_to "Is Active", :office, class: "table-cell pr-4", data: { turbo_action: "advance" } %>
+        <%= sort_link_to "Created At", :start_date, class: "table-cell pr-4", data: { turbo_action: "advance" } %>
+      </div>
+      <%= render partial: "user", collection: @users %>
+    </div>
+  <% end %>
+
+  <%# TODO: For some reason, pagy_nav renders a String instead of HTML %>
+  <%== pagy_nav @pagy %>
 </div>
+
